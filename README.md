@@ -19,4 +19,7 @@ Workflow for working with FreeCAD->Salome->Gmsh->palace
   13. create .json simulation configurations (let's inspire already done simulation profiles) using .msh file
   14. run palace simulation over configuration .json file
   15. create plot result python script (mine is using panda library to print S11 params)
- 
+
+This is how my environment in pycharm looks like when using palace which is running inside virtual box, this way I can edit all files at one place and not to be confused:
+![pycharm_environment_for_simulation](https://github.com/user-attachments/assets/4064a9c0-a182-4d25-92b8-b42bfa09062f)
+
