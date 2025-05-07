@@ -23,3 +23,5 @@ Workflow for working with FreeCAD->Salome->Gmsh->palace
 This is how my environment in pycharm looks like when using palace which is running inside virtual box, this way I can edit all files at one place and not to be confused:
 ![pycharm_environment_for_simulation](https://github.com/user-attachments/assets/4064a9c0-a182-4d25-92b8-b42bfa09062f)
 
+This is how editing mesh looks like in Salome MECA:
+![image](https://github.com/user-attachments/assets/381c61ec-a815-4530-915e-6fdfe2646736)
