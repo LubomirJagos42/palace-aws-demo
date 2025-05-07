@@ -6,7 +6,7 @@ Workflow for working with FreeCAD->Salome->Gmsh->palace
   2. export files as .step files
   3. import them into Salome (I used v2023 version)
   4. make partition object from them (this is needed to create right fragmented and continuous mesh object)
-  5. explode partitioned object
+  5. explode partitioned object (https://www.youtube.com/watch?v=EcA5I9orOCg)
   6. rename needed object (this is really picky step since you need explode volumes and shells)
   7. change for mesh view
   8. create mesh object over partitioned object (whole object which own all subojects)
