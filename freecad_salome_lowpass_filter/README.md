@@ -9,3 +9,5 @@ Here is what I have done:
 Here is result on picture below what was expected and also same example done in openEMS have same result :)
 
 ![image](https://github.com/user-attachments/assets/336fadb5-ddf6-4b8d-aafc-ab4f2bc4d479)
+
+![image](https://github.com/user-attachments/assets/de6b41d4-1c32-4e13-81d3-97d26597ff81)
