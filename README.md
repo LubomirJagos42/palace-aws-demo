@@ -27,3 +27,11 @@ This is how my environment in pycharm looks like when using palace which is runn
 
 This is how editing mesh looks like in Salome MECA:
 ![image](https://github.com/user-attachments/assets/381c61ec-a815-4530-915e-6fdfe2646736)
+
+Errors - explanation
+====================
+MFEM abort: (r,c,f) = (24,25,254)
+ ... in function: int mfem::STable3D::operator()(int, int, int) const
+ ... in file: /opt/palace-build/extern/mfem/general/stable3d.cpp:112
+
+ This error means there is some error in mesh. Mostly overlapping meshlines or something else, rework it.
