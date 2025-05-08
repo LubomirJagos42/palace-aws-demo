@@ -1,4 +1,4 @@
-# palace-aws-demo
+# low-pass filter simulated in palace aws
 Low-pass filter example, this filter was designed by random to be appr. lowpass at 2GHz. Simulated in palace to show how to do it right.
 
 Here is what I have done:
