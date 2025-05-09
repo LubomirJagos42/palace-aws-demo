@@ -1,0 +1,90 @@
+{
+  "Problem": {
+    "Type": "Driven",
+    "Verbose": 3,
+    "Output": "sim_results"
+  },
+
+  "Model": {
+    "Mesh": "mesh_files/mesh_model_converted.msh",
+    "L0": 1.0,  //base unit is meter
+    "CrackDisplacementFactor": 1e-07,
+    "Refinement": {}
+  },
+
+  "Domains": {
+    "Materials": [
+      {  // Air
+        "Attributes": [2],
+        "Permittivity": 1.0,
+        "Permeability": 1.0,
+        "LossTan": 0.0
+      },
+      {  // FR4
+        "Attributes": [1],
+        "Permittivity": 4.2,
+        "Permeability": 1.0,
+        "LossTan": 0.02
+      },
+    ],
+  },
+
+  "Boundaries": {
+    "Absorbing": {
+      "Attributes": [9],
+      "Order": 1
+    },
+    "PEC": {
+      "Attributes": [5,6]
+    },
+    "Impedance": [
+        {
+            "Attributes": [4],
+            "Rs": 403.0,
+            "Ls": 0.0,
+            "Cs": 0.0
+        }
+    ],
+    "LumpedPort": [
+      {
+        "Index": 1,
+        "Attributes": [7],
+        "Direction": "Z",
+        "R": 50.0,
+        "Excitation": true
+      },
+      {
+        "Index": 2,
+        "Attributes": [3],
+        "Direction": "Z",
+        "R": 50.0,
+        "Excitation": false
+      },
+      {
+        "Index": 3,
+        "Attributes": [8],
+        "Direction": "Z",
+        "R": 50.0,
+        "Excitation": false
+      }
+    ]
+  },
+
+  "Solver": {
+    "Driven": {
+        "MinFreq": 1.0,
+        "MaxFreq": 2.0,
+        "FreqStep": 0.1,
+        "SaveStep": 0,
+        "AdaptiveTol": 1e-3
+    },
+    "Linear": {
+        "Type": "Default",
+        "KSPType": "GMRES",
+        "Tol": 1e-03,     //!!!tolerance made too low to see what will happen with results
+        "MaxIts": 200
+    },
+    "Order": 2,
+    "Device": "CPU"
+  }
+}
