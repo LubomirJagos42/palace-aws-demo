@@ -1,0 +1,81 @@
+{
+  "Problem": {
+    "Type": "Driven",
+    "Verbose": 3,
+    "Output": "sim_results_absorbing"
+  },
+
+  "Model": {
+    "Mesh": "mesh_files/mesh_model_converted.msh",
+    "L0": 1.0e-3,  //base unit is mm
+    "CrackDisplacementFactor": 1e-03,
+    "Refinement": {}
+  },
+
+  "Domains": {
+    "Materials": [
+      {  // Air
+        "Attributes": [7],
+        "Permittivity": 1.0,
+        "Permeability": 1.0
+      }
+    ]
+  },
+
+  "Boundaries": {
+    "PEC": {
+      "Attributes": [1,2,5,6]
+    },
+    "Absorbing": {
+      "Attributes": [4]
+    },
+    "WavePort": [
+      {
+        "Index": 1,
+        "Attributes": [3],
+        "Excitation": true,
+        "Active": true,
+        "Mode": 1
+      }
+    ],
+    "Postprocessing":
+    {
+        "SurfaceFlux":
+        [
+            {
+                "Index": 1,
+                "Attributes": [7],
+                "Type": "Electric",
+                "TwoSided": false
+            }
+        ]
+    }
+  },
+
+  "Solver": {
+    "Driven": {
+        "MinFreq": 4.5,
+        "MaxFreq": 5.5,
+        "FreqStep": 0.1,
+        "SaveStep": 0,
+        "AdaptiveTol": 1e-3
+    },
+    "Transient": {
+        "Excitation": "Gaussian",
+        "ExcitationFreq": 1.5,
+        "ExcitationWidth": 1.5,
+        "MaxTime": 60,
+        "TimeStep": 0.3,
+        "SaveStep": 1
+    },
+    "Linear": {
+        "Type": "Default",
+        "KSPType": "GMRES",
+        "Tol": 1e-03,     //!!!tolerance made too low to see what will happen with results
+        "MaxIts": 200
+    },
+    "Order": 2,
+    "Device": "CPU"
+  }
+
+}

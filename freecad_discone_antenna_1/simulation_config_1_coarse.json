@@ -1,0 +1,63 @@
+{
+  "Problem": {
+    "Type": "Driven",
+    "Verbose": 4,
+    "Output": "sim_results_2"
+  },
+
+  "Model": {
+    "Mesh": "mesh_files/model_mesh_converted.msh",
+    "L0": 1.0,  //base unit is mm
+    "CrackDisplacementFactor": 1e-07,
+    "Refinement": {}
+  },
+
+  "Domains": {
+    "Materials": [
+      {  // Air
+        "Attributes": [6,7,8],
+        "Permittivity": 1.0,
+        "Permeability": 1.0,
+        "LossTan": 0.0
+      }
+    ]
+  },
+
+  "Boundaries": {
+    "Absorbing": {
+      "Attributes": [1],
+      "Order": 1
+    },
+    "PEC": {
+      "Attributes": [2,3,4]
+    },
+    "LumpedPort": [
+      {
+        "Index": 1,
+        "Attributes": [5],
+        "Direction": "-Z",
+        "R": 50.0,
+        "Excitation": true
+      }
+    ]
+  },
+
+  "Solver": {
+    "Driven": {
+        "MinFreq": 0.1,
+        "MaxFreq": 8.2,
+        "FreqStep": 0.05,
+        "SaveStep": 0,
+        "AdaptiveTol": 1e-5
+    },
+    "Linear": {
+        "Type": "Default",
+        "KSPType": "GMRES",
+        "Tol": 1e-03,
+        "MaxIts": 100
+    },
+    "Order": 1,
+    "Device": "CPU"
+  }
+}
+
