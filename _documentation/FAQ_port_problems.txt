@@ -1,0 +1,35 @@
+How to right define ports or what I did wrong and learned how to not do things
+==============================================================================
+This is from conversation with chatGPT
+
+Q: I tried in palace simulator assign port to cylinder surface but after mesh getting error "Specified direction does not align sufficiently with
+bounding box axes" can in FEM method excite port be specified on cylinder or it should be on flat face like rectangle?
+
+A: In finite element method (FEM) solvers like Palace (Parallel Acoustic and Electromagnetic Solver), ports (wave ports) are typically required
+to be defined on planar (flat) faces, and not on curved surfaces like the lateral surface of a cylinder.
+
+Error Explanation
+-----------------
+
+Error: "Specified direction does not align sufficiently with bounding box axes"
+This error generally means:
+    - Palace tries to infer a local coordinate system or port orientation for mode solving (e.g., TE, TM).
+    - The port face you've chosen is not planar or does not align with standard axes (X, Y, or Z).
+    - Palace uses bounding box heuristics to align the mode solver and cannot do this reliably for cylindrical (curved) faces.
+
+Correct Usage of Ports in FEM
+    - Ports must be defined on flat, planar surfaces that are perpendicular to the intended excitation direction (e.g., z-directed port uses a face orthogonal to Z-axis).
+    - If you have a cylindrical waveguide:
+         - Use the flat circular face at the cylinder's end as the port.
+         - Do not assign the port to the curved lateral face of the cylinder.
+
+Solution
+    - If you want to excite a port on a cylindrical structure:
+        1. Identify the flat circular face at the end of the cylinder.
+        2. In your mesh or Salome geometry, name or group that circular face.
+        3. Assign the wave port in Palace to that planar face, not the side.
+
+Why Planar Surfaces?
+Port excitation involves solving an eigenmode problem on the 2D cross-section of the port. This problem requires:
+    - A well-defined normal direction (only defined on flat surfaces).
+    - An orthogonal mode basis, which is difficult or ill-posed on curved boundaries.

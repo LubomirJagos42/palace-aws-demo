@@ -35,3 +35,5 @@ MFEM abort: (r,c,f) = (24,25,254)
  ... in file: /opt/palace-build/extern/mfem/general/stable3d.cpp:112
 
  This error means there is some error in mesh. Mostly overlapping meshlines or something else, rework it.
+
+ Ports should be defined on planar flat region, not curved face or similar!!!

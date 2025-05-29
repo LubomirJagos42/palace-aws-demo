@@ -1,0 +1,90 @@
+{
+  "Problem":
+  {
+    "Type": "Magnetostatic",
+    "Verbose": 2,
+    "Output": "sim_results"
+  },
+  "Model":
+  {
+    "Mesh": "mesh_files/model_mesh_converted_2.msh",
+    "L0": 1.0  // m
+  },
+  "Domains":
+  {
+    "Materials":
+    [
+      {
+        "Attributes": [1],
+        "Permeability": 1.0
+      }
+    ],
+    "Postprocessing":
+    {
+      "Probe":
+      [
+        {
+          "Index": 1,  // Center of rings
+          "Center": [0.0, 0.0, 0.004]
+        }
+      ],
+      "Energy":
+      [
+        {
+          "Index": 1,
+          "Attributes": [1]
+        }
+      ]
+    }
+  },
+  "Boundaries":
+  {
+    "PEC":
+    {
+      "Attributes": [6,7]
+    },
+    "SurfaceCurrent":
+    [
+      {
+        "Index": 1,
+        "Attributes": [8],  // coil input current
+        "Direction": [0.0, 0.0, 1.0]
+      },
+    ],
+    "Postprocessing":  // Inductance from flux instead of energy
+    {
+      "SurfaceFlux":
+      [
+        {
+          "Index": 1,
+          "Attributes": [4],    // Inner hole
+          "Type": "Magnetic",
+	      "Center": [0, 0, -1]  // Positive in +Z
+        },
+        {
+          "Index": 2,
+          "Attributes": [4,5],  // Outer (total) hole
+	  "Type": "Magnetic",
+          "Center": [0, 0, -1]   // Positive in +Z
+        }
+      ]
+    }
+  },
+  "Solver":
+  {
+    "Order": 2,
+    "Device": "CPU",
+    "Magnetostatic":
+    {
+      "Save": 2
+    },
+    "Linear":
+    {
+      "Type": "AMS",
+      "KSPType": "CG",
+      "Tol": 1.0e-8,
+      "MaxIts": 100
+    }
+  }
+}
+
