@@ -25,25 +25,25 @@
     },
     "Durations": {
       "Adaptation": 0.0,
-      "CoarseSolve": 1.238891562,
-      "Construction": 3.263706796,
-      "DiskIO": 10.506671223,
+      "CoarseSolve": 12.079359595999998,
+      "Construction": 38.610218936,
+      "DiskIO": 61.749504332,
       "Div.-FreeProjection": 0.0,
       "EigenvalueSolve": 0.0,
-      "Estimation": 0.18734662,
-      "Initialization": 0.175809175,
-      "LinearSolve": 3.606189822000001,
-      "MeshPreprocessing": 0.699281959,
-      "OperatorConstruction": 2.0272557919999996,
+      "Estimation": 2.442976793,
+      "Initialization": 0.8977480649999999,
+      "LinearSolve": 27.839243870999994,
+      "MeshPreprocessing": 5.138814327,
+      "OperatorConstruction": 17.206259776,
       "PROMConstruction": 0.0,
       "PROMSolve": 0.0,
-      "Postprocessing": 0.34544525099999995,
-      "Preconditioner": 26.946478343000013,
+      "Postprocessing": 4.292608344,
+      "Preconditioner": 238.4403809940001,
       "Rebalancing": 0.0,
-      "Setup": 2.87792784,
-      "Solve": 361.063162825,
+      "Setup": 32.979815244,
+      "Solve": 344.517613225,
       "TimeStepping": 0.0,
-      "Total": 412.997069743,
+      "Total": 786.326035544,
       "WavePorts": 0.0
     }
   },
@@ -53,12 +53,12 @@
     "TotalSolves": 1
   },
   "Problem": {
-    "DegreesOfFreedom": 236192,
+    "DegreesOfFreedom": 1442594,
     "MPISize": 1,
-    "MeshElements": 33020,
+    "MeshElements": 211327,
     "MultigridDegreesOfFreedom": [
-      46557,
-      236192
+      277251,
+      1442594
     ],
     "OpenMPThreads": 1
   }

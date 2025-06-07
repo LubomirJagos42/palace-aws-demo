@@ -1,0 +1,21 @@
+Row 1:  nfhnode203  to  nfhnode204
+Impedance matrix for frequency = 1 1 x 1
+     0.0532754  +5.29546e-06j 
+Impedance matrix for frequency = 10 1 x 1
+     0.0532754  +5.29546e-05j 
+Impedance matrix for frequency = 100 1 x 1
+     0.0532755  +0.000529546j 
+Impedance matrix for frequency = 1000 1 x 1
+     0.0532757   +0.00529546j 
+Impedance matrix for frequency = 10000 1 x 1
+     0.0533036    +0.0529534j 
+Impedance matrix for frequency = 100000 1 x 1
+      0.055607      +0.52856j 
+Impedance matrix for frequency = 1e+06 1 x 1
+     0.0864812      +5.23027j 
+Impedance matrix for frequency = 1e+07 1 x 1
+      0.226972      +51.8702j 
+Impedance matrix for frequency = 1e+08 1 x 1
+      0.347384      +517.667j 
+Impedance matrix for frequency = 1e+09 1 x 1
+      0.351661      +5176.38j 

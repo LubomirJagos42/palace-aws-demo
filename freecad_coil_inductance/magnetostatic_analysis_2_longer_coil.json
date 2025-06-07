@@ -1,0 +1,75 @@
+{
+  "Problem":
+  {
+    "Type": "Magnetostatic",
+    "Verbose": 2,
+    "Output": "sim_results_2"
+  },
+  "Model":
+  {
+    "Mesh": "mesh_files_2/model_mesh_converted.msh",
+    "L0": 1.0  // m
+  },
+  "Domains":
+  {
+    "Materials":
+    [
+      {
+        "Attributes": [3,4,6,7],
+        "Permeability": 1.0
+      }
+    ],
+    "Postprocessing":
+    {
+      "Probe":
+      [
+        {
+          "Index": 1,  // Center of rings
+          "Center": [0.0, 0.0, 0.004]
+        }
+      ],
+      "Energy":
+      [
+        {
+          "Index": 1,
+          "Attributes": [4]
+        }
+      ]
+    }
+  },
+  "Boundaries":
+  {
+    "PEC":
+    {
+      "Attributes": [1,2]
+    },
+    "SurfaceCurrent":
+    [
+      {
+        "Index": 1,
+        "Attributes": [5],  // coil input current
+        "Direction": [0.0, 0.0, 1.0]
+      },
+    ],
+    "Postprocessing":  // Inductance from flux instead of energy
+    {
+    }
+  },
+  "Solver":
+  {
+    "Order": 2,
+    "Device": "CPU",
+    "Magnetostatic":
+    {
+      "Save": 2
+    },
+    "Linear":
+    {
+      "Type": "AMS",
+      "KSPType": "CG",
+      "Tol": 1.0e-8,
+      "MaxIts": 1000
+    }
+  }
+}
+
