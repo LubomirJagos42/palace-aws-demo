@@ -1,0 +1,27 @@
+{
+  "Excitations": [
+    [
+      [
+        1,
+        {
+          "LumpedPort": [
+            1
+          ],
+          "SurfaceCurrent": [],
+          "WavePort": []
+        }
+      ]
+    ]
+  ],
+  "GitTag": "v0.13.0-454-gcd4d7b78",
+  "Problem": {
+    "DegreesOfFreedom": 554620,
+    "MPISize": 1,
+    "MeshElements": 81443,
+    "MultigridDegreesOfFreedom": [
+      106531,
+      554620
+    ],
+    "OpenMPThreads": 1
+  }
+}

@@ -1,0 +1,20 @@
+How to generate something similar to far field?
+===============================================
+Here are steps which I tried and they seems to produce some plot similar to far field diagram:
+     1. make sphere around whole model with center approximately at port or phase antenna center
+     2. set absorbing boundary on this sphere surface
+     3. set Postprocessing > Surface: Eletric field to be sensed in palace simulation
+     4. perform simulation
+     5. open generated paraview result
+     6. now going extract data:
+           a) This is how to get CSV file with points but no edges:
+                   1. use 3D window and select all cells
+                   2. File > Save Data, use CSV format
+                   3. use python pandas  to recalculate radius of each point based on E field magnitude
+                   4. export as vtk file, you got just points in result
+
+           b) This is how to modify vtk sphere:
+                   1. use 3D window to select whole sphere surface
+                   2. use Filters > Extract Selection
+                   3. save selection using File > Save as vtk file
+                   4. use python script which load vtk object and modify each point based on field values at that point
