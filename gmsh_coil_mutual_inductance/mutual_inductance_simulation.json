@@ -1,0 +1,87 @@
+{
+  "Problem":
+  {
+    "Type": "Magnetostatic",
+    "Verbose": 3,
+    "Output": "sim_results_2"
+  },
+  "Model":
+  {
+    "Mesh": "simulation_config/coil_model.msh",
+    "L0": 1.0e-3  // m
+  },
+  "Domains":
+  {
+    "Materials":
+    [
+      {
+        "Attributes": [100],
+        "Permeability": 1.0
+      }
+    ],
+    "Postprocessing":
+    {
+      "Probe":
+      [
+        {
+          "Index": 1,  // Center of rings
+          "Center": [0.0, 0.0, 0.004]
+        }
+      ],
+      "Energy":
+      [
+        {
+          "Index": 1,
+          "Attributes": [100]
+        }
+      ]
+    }
+  },
+  "Boundaries":
+  {
+    "PEC":
+    {
+      "Attributes": [200,300,400]
+    },
+    "SurfaceCurrent":
+    [
+      {
+        "Index": 1,
+        "Attributes": [500],
+        "Direction": [0.0, 0.0, 1.0]
+      },
+      {
+        "Index": 2,
+        "Attributes": [600],
+        "Direction": [0.0, 0.0, 1.0]
+      }
+    ]
+//    "LumpedPort":
+//    [
+//        {
+//            "Index": 1,
+//            "Attributes": [600],
+//            "Direction": "+Z",
+//            "Active": false,
+//            "Rs": 50
+//        }
+//    ]
+  },
+  "Solver":
+  {
+    "Order": 2,
+    "Device": "CPU",
+    "Magnetostatic":
+    {
+      "Save": 2
+    },
+    "Linear":
+    {
+      "Type": "AMS",
+      "KSPType": "CG",
+      "Tol": 1.0e-8,
+      "MaxIts": 100
+    }
+  }
+}
+
