@@ -1,0 +1,83 @@
+{
+  "Problem": {
+    "Type": "Driven",
+    "Verbose": 3,
+    "Output": "sim_result"
+  },
+
+  "Model": {
+    "Mesh": "mesh/antenna_model.msh",
+    "L0": 1.0e-3 //units specification
+//    "CrackDisplacementFactor": 1e-07
+//    "Refinement": {}
+  },
+
+  "Domains": {
+    "Materials": [
+      {  // Air
+        "Attributes": [1],
+        "Permittivity": 1.0,
+        "Permeability": 1.0,
+        "LossTan": 0.0
+      },
+      {  // FR4
+        "Attributes": [1000],
+        "Permittivity": 4.2,
+        "Permeability": 1.0,
+        "LossTan": 0.02
+      }
+    ]
+  },
+
+  "Boundaries": {
+    "Absorbing": {
+      "Attributes": [303],
+      "Order": 1
+    },
+    "PEC": {
+      "Attributes": [300,301]
+    },
+    "LumpedPort": [
+      {
+        "Index": 1,
+        "Attributes": [302],
+        "Direction": "Z",
+        "R": 50.0,
+        "Excitation": true
+      }
+    ],
+    "Postprocessing": {
+        "FarField": {
+            "Attributes": [303],
+            "NSample": 64800,         //fine farfield 1deg in phi and theta
+            "ThetaPhis": [[35, 20]]
+        }
+    }
+  },
+
+  "Solver": {
+    "Driven": {
+//        "MinFreq": 1.5,
+//        "MaxFreq": 1.75,
+//        "FreqStep": 0.005,
+//        "SaveStep": 1,
+//        "AdaptiveTol": 1e-3,
+        "Samples": [
+            {
+                "Type": "Point",
+                "Freq": [1.6538], // GHz
+                "SaveStep": 1
+            }
+        ]
+    },
+    "Linear": {
+        "Type": "Default",
+        "KSPType": "GMRES",
+        "Tol": 1e-03,
+        "MaxIts": 100
+    },
+    "Order": 2,
+    "Device": "CPU"
+  }
+}
+

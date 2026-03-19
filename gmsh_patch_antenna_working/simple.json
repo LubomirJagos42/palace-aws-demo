@@ -1,8 +1,7 @@
 {
   "Problem": {
     "Type": "Driven",
-//    "Verbose": 3,
-    "Verbose": 10,
+    "Verbose": 3,
     "Output": "sim_result"
   },
 
