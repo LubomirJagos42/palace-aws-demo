@@ -4,8 +4,6 @@
 #
 
 import gmsh
-from pyjsparser.parser import false
-
 
 class BasicMfemMesher:
 
@@ -170,7 +168,7 @@ class BasicMfemMesher:
                     if dimtag[0] in [3]:
                         isToolObjectAbleToCut = True
 
-                isBaseObjectAbleToCut = false
+                isBaseObjectAbleToCut = False
                 for dimtag in baseGeometryObject["dimtags"]:
                     if dimtag[0] in [2,3]:
                         isBaseObjectAbleToCut = True
@@ -179,7 +177,7 @@ class BasicMfemMesher:
                     continue
 
                 #   Without this cutting all 3D objects between each other there is error in palace from MFEM library:
-                #         Verification failed: (faces_info[gf].Elem2No < 0) is false:
+                #         Verification failed: (faces_info[gf].Elem2No < 0) is False:
                 #          --> Invalid mesh topology.  Interior triangular face found connecting elements 20, 21 and 40.
                 #          ... in function: void mfem::Mesh::AddTriangleFaceElement(int, int, int, int, int, int)
                 #          ... in file: /opt/palace-build/extern/mfem/mesh/mesh.cpp:8198

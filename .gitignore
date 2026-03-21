@@ -1,3 +1,7 @@
 .idea
 sim_result*
 postpro
+__pycache__
+utils/basicmfemmesher.egg-info
+utils/build
+*.FCBak
