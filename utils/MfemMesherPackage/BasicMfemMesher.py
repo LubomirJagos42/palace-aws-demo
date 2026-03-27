@@ -38,7 +38,7 @@ class BasicMfemMesher:
             priority = self.internalGeometryObjectIndexCounter
             self.internalGeometryObjectIndexCounter += 1
 
-        self.geometryObjectList.append({"name": "airbox", "dimtags": dimtags, "priority": priority})
+        self.geometryObjectList.append({"name": name, "dimtags": dimtags, "priority": priority})
 
     def addGmshVolumeObject(self, name, gmshObjectTag, priority=-1):
         _, gmshObjectBoundary = gmsh.model.occ.getSurfaceLoops(gmshObjectTag)
