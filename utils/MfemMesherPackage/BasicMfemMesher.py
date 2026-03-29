@@ -149,7 +149,8 @@ class BasicMfemMesher:
         print("Fragmentation finished...")
 
     def createGroup(self, groupName, objectName, dimension, groupTag=-1):
-        gmsh.model.addPhysicalGroup(dimension, [tag for dim, tag in self.getGeometryObject(objectName)["dimtags"] if dim == dimension], tag=groupTag, name=groupName)
+        groupTag = gmsh.model.addPhysicalGroup(dimension, [tag for dim, tag in self.getGeometryObject(objectName)["dimtags"] if dim == dimension], tag=groupTag, name=groupName)
+        return groupTag
 
     def cutVolumesInsideModel(self):
         self.sortGeomtriesBasedOnPriority()
@@ -220,4 +221,19 @@ class BasicMfemMesher:
         gmsh.model.mesh.field.setNumber(field_threshold, "DistMax", distanceMax)
 
         return field_threshold
+
+    def setSizeOnFace(self, geometryObjectNameOrList: str | list[str], max_size: float=0.0):
+        # Collect all surface tags
+        all_surfaces = []
+        if type(geometryObjectNameOrList) == str:
+            all_surfaces.extend([tag for dim, tag in self.getGeometryObject(geometryObjectNameOrList)["dimtags"] if dim == 2])
+        else:
+            for geometryObjectName in geometryObjectNameOrList:
+                all_surfaces.extend([tag for dim, tag in self.getGeometryObject(geometryObjectName)["dimtags"] if dim == 2])
+
+        ctag = gmsh.model.mesh.field.add("Constant")
+        gmsh.model.mesh.field.set_numbers(ctag, "SurfacesList", all_surfaces)
+        gmsh.model.mesh.field.set_number(ctag, "VIn", max_size)
+
+        return ctag
 
