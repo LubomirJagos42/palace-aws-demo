@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="basicmfemmesher",
+    name="basicpalacesolverhelperpackage",
     version="0.1.0",
     author="Lubomir Jagos",
     author_email="lubomir.jagos.42@gmail.com",
