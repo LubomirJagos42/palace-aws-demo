@@ -18,13 +18,13 @@ Both arguments are required.
 Requires pandas, numpy, and matplotlib.
 """
 
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 import argparse
 import sys
 from pathlib import Path
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 
 
 def compute_field_magnitude(df):

@@ -5,10 +5,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="basicpalacesolverhelperpackage",
-    version="0.1.0",
+    version="0.0.1",
     author="Lubomir Jagos",
     author_email="lubomir.jagos.42@gmail.com",
-    description="Mesh creation utilities for Palace EM solver",
+    description="Mesh creation and plot utilities for Palace EM solver or other FEM solver.",
     long_description="Basic object to manage geometries inside gmsh and create proper continous mesh to be usable in palace aws solver",
     long_description_content_type="text/markdown",
     url="https://github.com/LubomirJagos42/palace-aws-demo/tree/main/utils",
@@ -21,7 +21,9 @@ setup(
     python_requires=">=3.7",
     install_requires=[
         "numpy",
-        "gmsh",  # Add your dependencies
+        "gmsh",
+        "scipy",
+        "pandas",
         # "other-package>=1.0.0",
     ],
 )

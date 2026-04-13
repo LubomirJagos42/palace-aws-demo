@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Load the file without header (columns will be numbered 0, 1, 2...)
-df = pd.read_csv("sim_result/port-S.csv", comment='#', skiprows=1, header=None)
+df = pd.read_csv("sim_result_s11/port-S.csv", comment='#', skiprows=1, header=None)
 
 # Plot: column 0 = Frequency, column 1 = S11
 plt.plot(df.iloc[:, 0], df.iloc[:, 1], marker='o', label="|S11| (dB)")

@@ -1,11 +1,7 @@
-import gmsh
+import os
 
-import os, sys
-sys.path.append(os.path.join(
-    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "utils"
-))
-from BasicMfemMesher import BasicMfemMesher
+import gmsh
+from basicpalacesolverhelperpackage import BasicMfemMesher
 
 ##########################################################################################################
 # MAIN PROGRAM
