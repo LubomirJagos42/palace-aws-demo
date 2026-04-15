@@ -9,12 +9,12 @@ Mesh creation utilities for Palace electromagnetic solver.
 
 ## Installation
 ```bash
-pip install basicmfemmesher
+pip install basicpalacesolverhelperpackage
 ```
 
 ## Usage
 ```python
-from basicmfemmesher import BasicMfemMesher
+from basicpalacesolverhelperpackage import BasicMfemMesher
 
 mesher = BasicMfemMesher()
 mesher.create_mesh(...)
