@@ -195,8 +195,17 @@ class BasicMfemMesher:
 
         print("Fragmentation finished...")
 
-    def createGroup(self, groupName, objectName, dimension, groupTag=-1):
-        groupTag = gmsh.model.addPhysicalGroup(dimension, [tag for dim, tag in self.getGeometryObject(objectName)["dimtags"] if dim == dimension], tag=groupTag, name=groupName)
+    def createGroup(self, groupName: str, objectNameOrNameList: str | list[str], dimension, groupTag=-1):
+        if type(objectNameOrNameList) == str:
+            groupTag = gmsh.model.addPhysicalGroup(dimension, [tag for dim, tag in self.getGeometryObject(objectNameOrNameList)["dimtags"] if dim == dimension], tag=groupTag, name=groupName)
+        elif type(objectNameOrNameList) == list:
+            geometryDimtagsList = []
+            for objectName in objectNameOrNameList:
+                geometryDimtagsList.extend(self.getGeometryObject(objectName)["dimtags"])
+            groupTag = gmsh.model.addPhysicalGroup(dimension, [tag for dim, tag in geometryDimtagsList if dim == dimension], tag=groupTag, name=groupName)
+        else:
+            raise("Invalid input for object, it must be str or list of strings!")
+
         return groupTag
 
     def cutVolumesInsideModel(self):
