@@ -37,3 +37,48 @@ MFEM abort: (r,c,f) = (24,25,254)
  This error means there is some error in mesh. Mostly overlapping meshlines or something else, rework it.
 
  Ports should be defined on planar flat region, not curved face or similar!!!
+
+Linux palace solver compile from source
+=======================================
+- download Xubuntu installer
+- create new virtual machine in VirtualBox
+	- assign .iso file to virtual machine
+	- make sure uncheck install VirtualGuest image to be able share folder from host pc (this failed during xubuntu installation on my pc, but after restart it's possible to install it from virtualbox menu)
+		- left it unchecked, this causing problems, install later manualy
+	- start machine
+
+- install dependencies:
+	> sudo apt install git
+	> sudo apt install g++
+	> sudo apt install openmpi-bin openmpi-common libopenmpi-dev
+	> sudo apt install libblas64-dev libopenblas-dev
+	> sudo apt install pkg-config
+
+- to install virtualbox guest iso:
+	> sudo apt install bzip2 tar
+	> cd /run/media/johndoe/VBox.../
+	> sudo ./VBoxLinuxAdditions.run
+
+- install palace using tutorial: https://awslabs.github.io/palace/stable/install/#Build-from-source
+	> git clone https://github.com/awslabs/palace.git
+	> mkdir build && cd build
+	> cmake ..
+	> sudo make -j 6
+	
+- create cmd to run palace inside container??? (is this needed when palace is compiled from source?)
+	> export PATH=$PATH:~/Documents/palace/build/palace-build
+
+- add shared folder from host machine to virtual machine in virtualbox
+- add current user to vbox group to be able access share folder
+	> sudo usermod -aG vboxsf $USER
+	
+- enable ssh access:
+	> sudo apt install openssh-server
+- verify it's running
+	> sudo systemctl status ssh
+	
+- install net-tools to be able get ethernet info like ifconfig:
+	> sudo apt install net-tools
+
+- my public exported virtual machine (name: johndoe, password: johndoe)
+	> https://drive.google.com/drive/folders/1pA1Nmw41c2nvH8Xr1N0B96BZC-I-bx-f?usp=sharing
